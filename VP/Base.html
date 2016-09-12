@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+
+        html, body, #background, #viewport {
+            margin:0px;
+            padding:0px;
+            height: 100%;
+            width: 100%;
+        }
+
+        #background, #viewport {
+            position:absolute;
+        }
+
+        #viewport
+        {
+            display: table-cell;
+            vertical-align: middle;
+            text-align:center;
+        }
+
+        .boardRow{
+            height:20vh;
+            border-bottom:1px solid red;
+            border-top:1px solid green;
+        }
+
+        .boardCol{
+            border-left:1px solid red;
+            border-right:1px solid green;
+            height:100%;
+            padding-left:0px;
+            padding-right:0px;
+            margin:0px;
+            float:left;
+        }
+
+        .boardSubRow{
+            height:33.333%;
+            border:2px dashed red;
+        }
+
+        .card
+        {
+            background-color:red;
+            height:96%;
+            margin:2%;
+        }
+
+        .col-xs-1-c{
+            width:8.33333%;
+        }
+
+        .col-xs-2-c{
+            width:16.6667%; 
+        }
+
+        .col-xs-1-c{
+            width:8.33333%;
+        }
+        
+
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <canvas id="background"></canvas>
+    <div id="viewport">
+        <div id="board" class="container">
+            <div class="boardRow">
+                <div class="col-xs-12">SP</div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRow">
+                        &nbsp;
+                    </div>
+                    <div class="boardSubRow">
+                        &nbsp;
+                    </div>
+                    <div class="boardSubRow">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card">
+                        
+                    </div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-1-c boardCol">
+
+                </div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        (function () {
+
+            var viewport = document.getElementById('viewport');
+            console.log('We have our viewport');
+            var viewportHeight = viewport.getBoundingClientRect().height;
+            console.log('Height : ' + viewportHeight);
+            var viewportWidth = viewport.getBoundingClientRect().width;
+            console.log('Width : ' + viewportWidth);
+
+            (function () {
+                var cBackground = document.getElementById('background');
+                cBackground.width = viewportWidth;
+                cBackground.height = viewportHeight;
+                if (cBackground != null) {
+                    if (cBackground.getContext) {
+                        var context = cBackground.getContext("2d");
+                        if (context != null) {
+                            var grd = context.createLinearGradient(0, 0, 0, cBackground.height / 2);
+                            grd.addColorStop(0, "black");
+                            //grd.addColorStop(1, "red");
+                            grd.addColorStop(1, "rgb(0, 8, 151)");
+                            context.fillStyle = grd;
+                            context.fillRect(0, 0, cBackground.width, cBackground.height);
+                        }
+                    }
+                }
+            })();
+
+
+
+            (function () {
+                var screen = document.getElementsByTagName('body');
+                //var board = document.getElementById('board');
+                var paper = document.getElementById('board');
+
+                window.addEventListener('resize', function () {
+
+                    //if (window.innerWidth >= window.innerHeight)
+                    {
+                        // take the smallest value
+                        var smallest = window.innerHeight;
+                        var mult = smallest / 2;
+
+                        if(mult * 3 > window.innerWidth)
+                        {
+                            mult = window.innerWidth / 3;
+                        }
+                        console.log(mult);
+
+                        paper.setAttribute('style', 'width:' + (mult * 3) + 'px;height:' + (mult * 2) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                    }
+                    /*
+                    else
+                    {
+                        // take the smallest value
+                        var smallest = window.innerWidth;
+                        var mult = smallest / 2;
+
+                        if (mult * 3 > window.innerHeight) {
+                            mult = window.innerHeight / 3;
+                        }
+                        console.log(mult);
+
+                        paper.setAttribute('style', 'width:' + (mult * 2) + 'px;height:' + (mult * 3) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                    }
+                    */
+
+                }, false);
+            })();
+        })();
+    </script>
+</body>
+</html>

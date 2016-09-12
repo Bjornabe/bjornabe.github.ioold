@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+
+        html, body {
+            height: 100%;
+            margin:0px;
+            padding:0px;
+        }
+
+        body
+        {
+            width: 100%;
+            display:table;
+        }
+
+        .parent {
+            
+            height: 100%;
+        }
+        .parent > .child {
+            
+        }
+        #paper{
+            background-color:red;
+            display: table-cell;
+            vertical-align: middle;
+            text-align:center;
+        }
+        #board{
+            background-color:green;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="paper">
+        <div id="board">Hi there this is the paper</div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            (function () {
+                var screen = document.getElementsByTagName('body');
+                //var board = document.getElementById('board');
+                var paper = document.getElementById('board');
+
+                window.addEventListener('resize', function () {
+
+                    if (window.innerWidth >= window.innerHeight)
+                    {
+                        // take the smallest value
+                        var smallest = window.innerHeight;
+                        var mult = smallest / 2;
+
+                        if(mult * 3 > window.innerWidth)
+                        {
+                            mult = window.innerWidth / 3;
+                        }
+                        console.log(mult);
+
+                        paper.setAttribute('style', 'width:' + (mult * 3) + 'px;height:' + (mult * 2) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                    }
+                    else
+                    {
+                        // take the smallest value
+                        var smallest = window.innerWidth;
+                        var mult = smallest / 2;
+
+                        if (mult * 3 > window.innerHeight) {
+                            mult = window.innerHeight / 3;
+                        }
+                        console.log(mult);
+
+                        paper.setAttribute('style', 'width:' + (mult * 2) + 'px;height:' + (mult * 3) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                    }
+
+                }, false);
+            })();
+        })();
+    </script>
+</body>
+</html>

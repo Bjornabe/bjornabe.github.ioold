@@ -1,0 +1,127 @@
+<html>
+    <head>
+
+        <!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        -->
+        <style type="text/css">
+
+            #viewport {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                background-color:transparent;
+            }
+
+            #viewport canvas {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color:transparent;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        
+            <div id="viewport">
+                <canvas id="cBackground" style="z-index:10"></canvas>
+                <canvas id="d" style="z-index:20"></canvas>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+            var viewport = document.getElementById('viewport');
+            console.log('We have our viewport');
+            var viewportHeight = viewport.getBoundingClientRect().height;
+            console.log('Height : ' + viewportHeight);
+            var viewportWidth = viewport.getBoundingClientRect().width;
+            console.log('Width : ' + viewportWidth);
+
+            (function () {
+                var cBackground = document.getElementById('cBackground');
+                cBackground.width = viewportWidth;
+                cBackground.height = viewportHeight;
+                if (cBackground != null) {
+                    if (cBackground.getContext) {
+                        var context = cBackground.getContext("2d");
+                        if (context != null) {
+                            var grd = context.createLinearGradient(0, 0, 0, cBackground.height / 2);
+                            grd.addColorStop(0, "black");
+                            //grd.addColorStop(1, "red");
+                            grd.addColorStop(1, "rgb(0, 8, 151)");
+                            context.fillStyle = grd;
+                            context.fillRect(0, 0, cBackground.width, cBackground.height);
+                        }
+                    }
+                }
+            })();
+
+            (function () {
+
+                /*~~  The diamonds!  ~~*/
+
+
+
+
+                console.log('Working ........ ');
+
+                var cDiamond = document.getElementById('d');
+                cDiamond.width = viewportWidth;
+                cDiamond.height = viewportHeight;
+                if (cDiamond != null) {
+                    if (cDiamond.getContext) {
+                        var context = cDiamond.getContext("2d");
+                        if (context != null) {
+
+
+
+                            var startingHeight = viewportHeight / 2;
+
+                            context.lineWidth = 10;
+                            context.shadowColor = 'black';
+                            context.shadowBlur = 20;
+                            context.strokeStyle = "white";
+
+                            context.beginPath();
+                            context.moveTo(100, startingHeight);
+                            context.lineTo(130, startingHeight + 30);
+                            context.lineTo(160, startingHeight);
+                            context.lineTo(130, startingHeight - 30);
+                            context.lineTo(100, startingHeight);
+                            context.lineTo(130, startingHeight + 30);
+                            context.stroke();
+
+                            var grd = context.createLinearGradient(100, startingHeight+30, 100, startingHeight-30);
+                            grd.addColorStop(0, "rgb(164, 75, 80)");
+                            grd.addColorStop(0.3, "red");
+                            grd.addColorStop(0.6, "red");
+                            grd.addColorStop(1, "rgb(164, 75, 80)");
+                            context.fillStyle = grd;
+                            context.fill();
+
+                            context.font = "bold 40px serif";
+                            context.fillStyle = "white";
+                            context.shadowColor = 'black';
+                            context.shadowBlur = 10;
+                            context.fillText("5", 120, startingHeight + 15);
+                        }
+                    }
+                }
+            })();
+
+
+
+        </script>
+
+    </body>
+</html>
