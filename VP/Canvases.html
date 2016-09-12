@@ -73,13 +73,14 @@
 
     </style>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.0.2/screenfull.js" type="text/javascript"></script>
 </head>
 <body>
     <canvas id="background"></canvas>
     <div id="viewport">
         <div id="board" class="container">
             <div class="boardRow">
-                <div class="col-xs-12">SP</div>
+                <div class="col-xs-12"><button id="fullScreenButton">FullScreen me</button></div>
             </div>
             <div class="boardRow">
                 <div class="col-xs-1-c boardCol">
@@ -131,6 +132,13 @@
 
     <script type="text/javascript">
         (function () {
+
+            document.getElementById('fullScreenButton').addEventListener('click', () => {
+                if (screenfull.enabled) {
+                    screenfull.request();
+                }
+            });
+
 
 
 
