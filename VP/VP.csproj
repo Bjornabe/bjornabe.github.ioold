@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3d1.html" />
+    <Content Include="Canvases2.html" />
     <Content Include="Canvases.html" />
     <Content Include="Base.html" />
     <Content Include="packages.config" />

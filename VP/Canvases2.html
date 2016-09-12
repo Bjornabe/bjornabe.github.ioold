@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+
+        html, body, #background, #viewport {
+            margin:0px;
+            padding:0px;
+            height: 100%;
+            width: 100%;
+        }
+
+        #background, #viewport {
+            position:absolute;
+        }
+
+        #viewport
+        {
+            display: table-cell;
+            vertical-align: middle;
+            text-align:center;
+        }
+
+        #board{
+            border: dashed red 4px;
+        }
+
+        .boardRow{
+            height:25vh;
+        }
+
+        .boardCol{
+            height:100%;
+            padding-left:0px;
+            padding-right:0px;
+            margin:0px;
+            float:left;
+        }
+
+        .boardSubRow{
+            height:33.333%;
+            text-align:right;
+        }
+
+        .card
+        {
+            background-color:red;
+            height:96%;
+            margin:2%;
+        }
+
+        .col-xs-1-c{
+            width:8.33333%;
+        }
+
+        .col-xs-2-c{
+            width:16.6667%; 
+        }
+
+        .col-xs-1-c{
+            width:8.33333%;
+        }
+
+        .diamond{
+            margin:0;
+            object-fit:fill;
+        }
+        .diamond-a{
+            
+        }
+        
+
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.0.2/screenfull.js" type="text/javascript"></script>
+</head>
+<body>
+    <canvas id="background"></canvas>
+    <div id="viewport">
+        <div id="board" class="container">
+            <div class="boardRow">
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRow">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )" ></canvas>
+                    </div>
+                    <div class="boardSubRow">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )" ></canvas>
+                    </div>
+                    <div class="boardSubRow">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )" ></canvas>
+                    </div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card">
+                        
+                    </div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-2-c boardCol">
+
+                </div>
+                <div class="col-xs-1-c boardCol">
+
+                </div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-12"><button id="fullScreenButton">FullScreen me</button></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        (function () {
+
+            document.getElementById('fullScreenButton').addEventListener('click', () => {
+                if (screenfull.enabled) {
+                    screenfull.request();
+                }
+            });
+
+
+
+
+            /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+            /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+            /*~~  !Globals!  ~~*/
+            /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+            /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+            var board = document.getElementById('board');
+
+
+            /*~~  Size and draw the background one off  ~~*/
+            (function () {
+                var cBackground = document.getElementById('background');
+                cBackground.width = window.innerWidth;
+                cBackground.height = window.innerHeight;
+                if (cBackground != null) {
+                    if (cBackground.getContext) {
+                        var context = cBackground.getContext("2d");
+                        if (context != null) {
+                            var grd = context.createLinearGradient(0, 0, 0, cBackground.height / 2);
+                            grd.addColorStop(0, "black");
+                            grd.addColorStop(1, "rgb(0, 8, 151)");
+                            context.fillStyle = grd;
+                            context.fillRect(0, 0, cBackground.width, cBackground.height);
+                        }
+                    }
+                }
+            })();
+
+
+            /*~~  Resizing entry!  ~~*/
+            window.addEventListener('resize', function () {
+
+                var numberOfTimes = 0;
+
+
+                if (window.innerWidth >= window.innerHeight) {
+                    // take the smallest value
+                    var smallest = window.innerHeight;
+                    var mult = smallest / 2;
+
+                    if (mult * 3 > window.innerWidth) {
+                        mult = window.innerWidth / 3;
+                    }
+
+                    board.setAttribute('style', 'width:' + (mult * 3) + 'px;height:' + (mult * 2) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                }
+                else {
+                    // take the smallest value
+                    var smallest = window.innerWidth;
+                    var mult = smallest / 2;
+
+                    if (mult * 3 > window.innerHeight) {
+                        mult = window.innerHeight / 3;
+                    }
+                    console.log(mult);
+
+                    board.setAttribute('style', 'width:' + (mult * 3) + 'px;height:' + (mult * 2) + 'px;max-width:' + screen.offsetWidth + 'px;max-height:' + screen.offsetHeight + 'px;');
+                }
+
+
+
+                /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+                /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+                /*~~  !Diamonds!  ~~*/
+                /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+                /*~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~ ~~*/
+                (function () {
+
+                    console.log('Drawing!!  ........ ' + Date());
+                    var diamonds = document.getElementsByClassName('diamond');
+                    for (var i = 0; i < diamonds.length; i++)
+                    {
+                        var cDiamond = diamonds[i];
+                        if (cDiamond != null) {
+                            if (cDiamond.getContext) {
+                                var context = cDiamond.getContext("2d");
+                                if (context != null) {
+
+                                    var clientRect = cDiamond.parentElement.getBoundingClientRect();
+                                    if (clientRect != null) {
+
+                                        // ~~ Gets the shortest side of the parent
+                                        var shortestLength = clientRect.height;
+                                        if (shortestLength > clientRect.width) {
+                                            shortestLength = clientRect.width;
+                                        }
+                                        console.log("shortestLength " + shortestLength);
+
+                                        // ~~ Clears the current canvas
+                                        // ~~ Sets the canvas to a square which fits in the parent
+                                        context.clearRect(0, 0, cDiamond.width, cDiamond.height);
+                                        cDiamond.width = shortestLength;
+                                        cDiamond.height = shortestLength;
+                                        console.log("clientRect");
+                                        console.log(clientRect);
+
+
+                                        // ~~ Image padding
+                                        var imagePadding = shortestLength * 0.15;
+                                        console.log("imagePadding " + imagePadding);
+
+                                        // ~~ Little divide by for the 
+                                        var diamondHalfHeight = (shortestLength / 2) - imagePadding;
+                                        console.log("diamondHalfHeight " + diamondHalfHeight);
+
+                                        var startingHeight = cDiamond.getBoundingClientRect().height;
+
+                                        context.lineWidth = parseInt(imagePadding);
+                                        context.shadowColor = 'black';
+                                        context.shadowBlur = 10;
+                                        context.strokeStyle = "white";
+
+                                        context.beginPath();
+                                        context.moveTo(0 + imagePadding, diamondHalfHeight + imagePadding);
+                                        context.lineTo(diamondHalfHeight + imagePadding, 0 + imagePadding);
+                                        context.lineTo((diamondHalfHeight * 2) + imagePadding, diamondHalfHeight + imagePadding);
+                                        context.lineTo(diamondHalfHeight + imagePadding, (diamondHalfHeight * 2) + imagePadding);
+                                        context.lineTo(0 + imagePadding, diamondHalfHeight + imagePadding);
+                                        context.lineTo(diamondHalfHeight + imagePadding, 0 + imagePadding);
+                                        context.stroke();
+
+                                        console.log();
+                                        var grd = context.createLinearGradient(0, imagePadding, 0, (diamondHalfHeight * 2) + imagePadding);
+                                        grd.addColorStop(0, cDiamond.attributes["outercolour"].value);
+                                        grd.addColorStop(0.3, cDiamond.attributes["innercolour"].value);
+                                        grd.addColorStop(0.6, cDiamond.attributes["innercolour"].value);
+                                        grd.addColorStop(1, cDiamond.attributes["outercolour"].value);
+                                        context.fillStyle = grd;
+                                        context.fill();
+
+                                        var fontSize = parseInt(diamondHalfHeight) * 1.5;
+                                        context.font = "bold " + fontSize + "px arial";
+                                        context.fillStyle = "white";
+                                        context.shadowColor = 'black';
+                                        context.shadowBlur = 10;
+                                        context.fillText("5", diamondHalfHeight, fontSize + (imagePadding));
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    
+                })();
+
+
+            }, false);
+
+            window.resizeBy(window.innerWidth, window.innerHeight);
+
+        })();
+    </script>
+</body>
+</html>
