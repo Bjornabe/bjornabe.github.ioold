@@ -27,7 +27,13 @@
         }
 
         .boardRow{
-            height:25vh;
+            height:28vh;
+        }
+        .boardRowTop{
+            height:3vh;
+        }
+        .boardRowBottom{
+            height:13vh;
         }
 
         .boardCol{
@@ -38,9 +44,14 @@
             float:left;
         }
 
-        .boardSubRow{
+        .boardSubRowLeft{
             height:33.333%;
             text-align:right;
+        }
+
+        .boardSubRowRight{
+            height:33.333%;
+            text-align:left;
         }
 
         .card
@@ -79,46 +90,127 @@
     <canvas id="background"></canvas>
     <div id="viewport">
         <div id="board" class="container">
+            <div class="boardRowTop">
+                <div class="col-xs-12"><button id="fullScreenButton">FullScreen me</button></div>
+            </div>
             <div class="boardRow">
                 <div class="col-xs-1-c boardCol">
-                    <div class="boardSubRow">
+                    <div class="boardSubRowLeft">
                         <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )" ></canvas>
                     </div>
-                    <div class="boardSubRow">
+                    <div class="boardSubRowLeft">
                         <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )" ></canvas>
                     </div>
-                    <div class="boardSubRow">
+                    <div class="boardSubRowLeft">
                         <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )" ></canvas>
                     </div>
                 </div>
                 <div class="col-xs-2-c boardCol">
-                    <div class="card">
-                        
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="boardRow">
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )"></canvas>
+                    </div>
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )"></canvas>
+                    </div>
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )"></canvas>
                     </div>
                 </div>
                 <div class="col-xs-2-c boardCol">
-
+                    <div class="card"></div>
                 </div>
                 <div class="col-xs-2-c boardCol">
-
+                    <div class="card"></div>
                 </div>
                 <div class="col-xs-2-c boardCol">
-
+                    <div class="card"></div>
                 </div>
                 <div class="col-xs-2-c boardCol">
-
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
                 </div>
                 <div class="col-xs-1-c boardCol">
-
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="boardRow">
-                <div class="col-xs-12"></div>
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )"></canvas>
+                    </div>
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )"></canvas>
+                    </div>
+                    <div class="boardSubRowLeft">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )"></canvas>
+                    </div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-2-c boardCol">
+                    <div class="card"></div>
+                </div>
+                <div class="col-xs-1-c boardCol">
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 112, 92, 85 )" innerColour="rgb( 147, 99, 95 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 18, 25, 97 )" innerColour="rgb( 1, 17, 174 )"></canvas>
+                    </div>
+                    <div class="boardSubRowRight">
+                        <canvas class="diamond" outerColour="rgb( 97, 67, 43 )" innerColour="rgb( 142, 104, 23 )"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="boardRow">
-                <div class="col-xs-12"></div>
-            </div>
-            <div class="boardRow">
+            <div class="boardRowBottom">
                 <div class="col-xs-12"><button id="fullScreenButton">FullScreen me</button></div>
             </div>
         </div>
