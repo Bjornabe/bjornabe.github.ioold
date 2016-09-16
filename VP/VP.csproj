@@ -66,6 +66,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\~Designs\QuickHit-Plain.svg">
+      <Link>SVGs\QuickHit-Plain.svg</Link>
+    </Content>
     <Content Include="3d1.html" />
     <Content Include="Canvases2.html" />
     <Content Include="Canvases.html" />
@@ -80,6 +83,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AspectRatio.html" />
+    <Content Include="SVGs\copy-TKW.svg" />
+    <Content Include="SVGs\diamond.html" />
+    <Content Include="SVGs\QuickHit.html" />
+    <Content Include="SVGs\TKW2.html" />
+    <Content Include="SVGs\TKW.html" />
+    <Content Include="SVGs\ln7.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="VideoPkr.html" />
     <Content Include="Web.config" />
   </ItemGroup>

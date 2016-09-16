@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+        .outer {
+                        fill: #fff;
+                        stroke: #000;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                    }
+
+                    .outer, .inner {
+                        fill-rule: evenodd;
+                    }
+
+                    .inner {
+                        fill: red;
+                    }
+
+                    .newinner {
+                        fill: green;
+                    }
+        
+        html, body{
+            width:100%;
+            height:100%;
+        }
+
+        #svgContainer
+        {
+            width:50%;
+            height:50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="svgContainer">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 300 300">
+            <g>
+                <path class="outer" d="M135,68.289L205.711,139,135,209.711,64.289,139Z" />
+
+                <path class="inner" d="M135,82.006L194.993,138.5,135,194.994,75.007,138.5Z" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>
