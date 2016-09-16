@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin:0px;
+            padding:0px;
+            position:absolute;
+            background-color:black;
+        }
+
+        #svgContainer {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            text-align:center;
+            position:absolute;
+            overflow:hidden;
+        }
+
+        #aspectBoard{
+
+        }
+    </style>
+</head>
+<body>
+    <div id="svgContainer">
+        <div id="aspectBoard">
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                 xmlns:cc="http://creativecommons.org/ns#"
+                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                 xmlns:svg="http://www.w3.org/2000/svg"
+                 xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 version="1.1"
+                 id="svg5504"
+                 viewBox="0 0 744.09448819 1052.3622047"
+                 height="297mm"
+                 width="210mm">
+                <defs id="defs5506">
+
+                    <clipPath id="myCircleClip">
+                        <ellipse cx="350" cy="250" rx="100" ry="100" style="fill:red"></ellipse>
+                    </clipPath>
+
+                    <linearGradient
+                        id="shimmerGradient"
+                                    gradientTransform="rotate(-30)">
+                        <stop style="stop-color:#ffffff;stop-opacity:0"
+                              offset="0"
+                              id="stop7362" />
+                        <stop id="stop7366"
+                              offset="0.37"
+                              style="stop-color:#ffffff;stop-opacity:0.24738675" />
+                        <stop style="stop-color:#ffffff;stop-opacity:0.35294118;"
+                              offset="0.38"
+                              id="stop7370" />
+                        <stop style="stop-color:#ffffff;stop-opacity:0"
+                              offset="0.42087382"
+                              id="stop7368" />
+                        <stop id="stop7356"
+                              offset="1"
+                              style="stop-color:#ffffff;stop-opacity:0" />
+                    </linearGradient>
+
+                </defs>
+
+                
+                <!--
+                <g id="layer1">
+                    <rect y="396.01761"
+                          x="140.48894"
+                          height="301.26062"
+                          width="444.73639"
+                          id="rect7348"
+                          style="display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.15686275" />
+                </g>-->
+                <g id="layer2">
+                    <ellipse cx="350" cy="250" rx="100" ry="100" style="fill:red"></ellipse>
+                </g>
+                <g clip-path="url(#myCircleClip)">
+                    <rect x="0" y="0" height="500" width="500" style="fill:url(#shimmerGradient)"></rect>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var isDebug = true;
+
+        function _rsz()
+        {
+            if (isDebug) { console.log("_rsz()"); }
+
+            // find max width based on height
+            var goldenWidth = window.innerHeight / 500 * 809;
+            if (isDebug) { console.log("goldenWidth"); }
+            if (isDebug) { console.log(goldenWidth); }
+
+            // find max height based on width
+            var goldenHeight = window.innerWidth / 809 * 500;
+            if (isDebug) { console.log("goldenHeight"); }
+            if (isDebug) { console.log(goldenHeight); }
+
+
+            if (goldenWidth > window.innerWidth)
+            {
+                // go with the golden height;
+                document.getElementById('aspectBoard').setAttribute('style', 'max-width:' + window.innerWidth + 'px;' + 'max-height:' + goldenHeight + 'px;');
+            }
+            else
+            {
+                document.getElementById('aspectBoard').setAttribute('style', 'max-width:' + goldenWidth + 'px;' + 'max-height:' + window.innerHeight + 'px;');
+            }
+        }
+
+        window.addEventListener('resize', _rsz);
+
+
+
+
+    
+    </script>
+
+    <script type="text/javascript">
+
+        // layer15 is the effects
+
+
+
+
+    </script>
+
+</body>
+</html>

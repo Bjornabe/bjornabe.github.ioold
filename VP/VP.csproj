@@ -66,6 +66,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\~Designs\maskTry.svg">
+      <Link>SVGs\maskTry.svg</Link>
+    </Content>
+    <Content Include="..\..\..\..\~Designs\QuickHit-Export.svg">
+      <Link>SVGs\QuickHit-Export.svg</Link>
+    </Content>
     <Content Include="..\..\..\..\~Designs\QuickHit-Plain.svg">
       <Link>SVGs\QuickHit-Plain.svg</Link>
     </Content>
@@ -83,9 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AspectRatio.html" />
+    <Content Include="SVGs\bahbah.svg" />
+    <Content Include="SVGs\ClipPathTesting2.html" />
     <Content Include="SVGs\copy-TKW.svg" />
     <Content Include="SVGs\diamond.html" />
     <Content Include="SVGs\QuickHit.html" />
+    <Content Include="SVGs\ClipPathTesting.html" />
     <Content Include="SVGs\TKW2.html" />
     <Content Include="SVGs\TKW.html" />
     <Content Include="SVGs\ln7.svg">
