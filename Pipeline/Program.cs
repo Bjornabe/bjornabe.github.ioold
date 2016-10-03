@@ -45,27 +45,60 @@ namespace Pipeline
             public XElement Xml { get; set; }
         }
 
+        public class Section
+        {
+            public string SectionPrefix { get; set; }
+            public string IndexTokenToReplace { get; set; }
+            public FileInfo SvgTemplate { get; set; }
+        }
+
         public static void Main(string[] args)
         {
-            XElement masterXml = XElement.Parse(File.ReadAllText(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\goldenBoard.svg"));
-
-            XElement masterXmlRootDefs = masterXml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootDefs").Count() > 0).First();
-            XElement masterXmlRootGroup = masterXml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootGroup").Count() > 0).First();
-
-            //XElement.Parse("<defs></defs><g id=\"root\"></g>");
-
             FileInfo destinationSvgHtmlInput = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\_index.html");
             FileInfo destinationSvgHtml = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\index.html");
             FileInfo destinationSvg = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\index.svg");
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\");
 
-            List<FileInfo> allSvgs = new List<FileInfo>();
+            DirectoryInfo baseDirectory = new DirectoryInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\");
 
-            directoryInfo.GetDirectories().ToList().ForEach(di => {
-                GetAllFiles(allSvgs, di, "*.svg", "p_*");
+
+            List<Section> sections = new List<Section>();
+            sections.Add(new Section() {
+                SectionPrefix = "b_*",
+                IndexTokenToReplace = "<!--##goldenBackground##-->",
+                SvgTemplate = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\_goldenBackground.svg")
             });
-            
+            sections.Add(new Section()
+            {
+                SectionPrefix = "p_*",
+                IndexTokenToReplace = "<!--##goldenBoard##-->",
+                SvgTemplate = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\_goldenBoard.svg")
+            });
+
+
+            string fileContents = File.ReadAllText(destinationSvgHtmlInput.FullName);
+            foreach (Section section in sections)
+            {
+                XElement containerXml = XElement.Parse(File.ReadAllText(section.SvgTemplate.FullName));
+                XElement containerXmlRootDefs = containerXml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootDefs").Count() > 0).First();
+                XElement containerXmlRootGroup = containerXml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootGroup").Count() > 0).First();
+
+                List<FileInfo> allSvgs = new List<FileInfo>();
+                ProcessSvgs(baseDirectory, allSvgs, section.SectionPrefix, containerXmlRootDefs, containerXmlRootGroup);
+
+                fileContents = fileContents.Replace(section.IndexTokenToReplace, containerXml.ToString());
+
+                File.WriteAllText(section.SvgTemplate.FullName.Replace("_",""), containerXml.ToString());
+            }
+            File.WriteAllText(destinationSvgHtml.FullName, fileContents);
+        }
+
+        private static void ProcessSvgs(DirectoryInfo directoryInfo, List<FileInfo> allSvgs, string sectionPrefix, XElement containerXmlRootDefs, XElement containerXmlRootGroup)
+        {
+            directoryInfo.GetDirectories(sectionPrefix).ToList().ForEach(di =>
+            {
+                GetAllFiles(allSvgs, di, "*.svg", sectionPrefix);
+            });
 
             List<SvgFile> svgFiles = new List<SvgFile>();
             allSvgs.ForEach(svg => svgFiles.Add(new SvgFile()
@@ -74,9 +107,8 @@ namespace Pipeline
                 Xml = XElement.Parse(File.ReadAllText(svg.FullName))
             }));
 
-            svgFiles.OrderBy(s => s.ZIndex).ToList().ForEach(svgFile => {
-
-
+            svgFiles.OrderBy(s => s.ZIndex).ToList().ForEach(svgFile =>
+            {
                 XElement svgDefs = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootDefs").Count() > 0).First();
                 XElement svgGroups = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootGroup").Count() > 0).First();
 
@@ -86,14 +118,9 @@ namespace Pipeline
                 XElement svgGroupGroup = XElement.Parse(string.Format("<g name=\"{0}\"></g>", svgFile.Name));
                 svgGroupGroup.Add(svgGroups.Elements());
 
-                masterXmlRootDefs.Add(svgDefGroup);
-                masterXmlRootGroup.Add(svgGroupGroup);
+                containerXmlRootDefs.Add(svgDefGroup);
+                containerXmlRootGroup.Add(svgGroupGroup);
             });
-
-            string fileContents = File.ReadAllText(destinationSvgHtmlInput.FullName);
-            fileContents = fileContents.Replace("<!--##goldenBoard##-->", masterXml.ToString());
-            File.WriteAllText(destinationSvgHtml.FullName, fileContents);
-            File.WriteAllText(destinationSvg.FullName, masterXml.ToString());
         }
 
         public static void GetAllFiles(List<FileInfo> list, DirectoryInfo dim, string fileSearchFilter, string directorySearchFilter)

@@ -110,15 +110,18 @@
     </Content>
     <Content Include="V0\VideoPkr.html" />
     <Content Include="V2\app.js" />
+    <Content Include="V2\goldenBackground.svg" />
     <Content Include="V2\goldenBoard.svg" />
+    <Content Include="V2\_goldenBackground.svg" />
+    <Content Include="V2\_goldenBoard.svg" />
     <Content Include="V2\index.html" />
     <Content Include="V2\index.svg" />
-    <Content Include="V2\p_0 background\image.svg">
+    <Content Include="V2\b_0 background\image.svg">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="V2\board-golden-aspect.css" />
     <Content Include="V2\board-golden-aspect.js" />
-    <Content Include="V2\p_1 background text\image.svg">
+    <Content Include="V2\b_1 background text\image.svg">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="V2\_index.html" />
