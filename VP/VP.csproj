@@ -66,6 +66,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\~Designs\bh.svg">
+      <Link>V2\p_1 background text\bh.svg</Link>
+    </Content>
     <Content Include="..\..\..\..\~Designs\maskTry.svg">
       <Link>SVGs\maskTry.svg</Link>
     </Content>
@@ -75,11 +78,16 @@
     <Content Include="..\..\..\..\~Designs\QuickHit-Plain.svg">
       <Link>SVGs\QuickHit-Plain.svg</Link>
     </Content>
-    <Content Include="3d1.html" />
-    <Content Include="Canvases2.html" />
-    <Content Include="Canvases.html" />
-    <Content Include="Base.html" />
-    <Content Include="packages.config" />
+    <Content Include="..\..\..\..\~Designs\QuickHit.svg">
+      <Link>V2\QuickHit.svg</Link>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V0\3d1.html" />
+    <Content Include="V0\Canvases2.html" />
+    <Content Include="V0\Canvases.html" />
+    <Content Include="V0\Base.html" />
+    <Content Include="V0\Inkscape\QuickHit.svg" />
+    <Content Include="V0\packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -88,23 +96,40 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AspectRatio.html" />
-    <Content Include="SVGs\bahbah.svg" />
-    <Content Include="SVGs\ClipPathTesting2.html" />
-    <Content Include="SVGs\copy-TKW.svg" />
-    <Content Include="SVGs\diamond.html" />
-    <Content Include="SVGs\QuickHit.html" />
-    <Content Include="SVGs\ClipPathTesting.html" />
-    <Content Include="SVGs\TKW2.html" />
-    <Content Include="SVGs\TKW.html" />
-    <Content Include="SVGs\ln7.svg">
+    <Content Include="V0\AspectRatio.html" />
+    <Content Include="V0\SVGs\bahbah.svg" />
+    <Content Include="V0\SVGs\ClipPathTesting2.html" />
+    <Content Include="V0\SVGs\copy-TKW.svg" />
+    <Content Include="V0\SVGs\diamond.html" />
+    <Content Include="V0\SVGs\QuickHit.html" />
+    <Content Include="V0\SVGs\ClipPathTesting.html" />
+    <Content Include="V0\_BQ.html" />
+    <Content Include="V0\SVGs\TKW.html" />
+    <Content Include="V0\SVGs\ln7.svg">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="VideoPkr.html" />
+    <Content Include="V0\VideoPkr.html" />
+    <Content Include="V2\app.js" />
+    <Content Include="V2\goldenBoard.svg" />
+    <Content Include="V2\index.html" />
+    <Content Include="V2\index.svg" />
+    <Content Include="V2\p_0 background\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V2\board-golden-aspect.css" />
+    <Content Include="V2\board-golden-aspect.js" />
+    <Content Include="V2\p_1 background text\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V2\_index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="V1\" />
+    <Folder Include="V2\reelbackground\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

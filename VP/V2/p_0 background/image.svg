@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   height="100%"
+   viewBox="0 0 805 500"
+   id="backgroud"
+   version="1.1">
+  <defs id="rootDefs">
+    <linearGradient
+      id="backgroundGradient"
+        x1="0"
+        y1="500"
+        x2="0"
+        y2="0"
+        gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" />
+      <stop offset="1" stop-color="#852029" />
+    </linearGradient>
+  </defs>
+  <g id="rootGroup">
+    <rect fill="url(#backgroundGradient)" x="0" y="0" width="100%" height="100%"></rect>
+  </g>
+</svg>

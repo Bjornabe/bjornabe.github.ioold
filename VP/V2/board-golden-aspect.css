@@ -1,0 +1,19 @@
+﻿html, body
+{
+    height : 100%;
+    margin : 0px;
+    padding : 0px;
+    width : 100%;
+    background-color:black;
+}
+
+#center
+{
+    text-align:center;
+    height:99%;
+}
+
+#goldenBoard
+{
+    background-color:black;
+}
