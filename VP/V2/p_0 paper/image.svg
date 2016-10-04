@@ -1,21 +1,58 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
+<svg xmlns="http://www.w3.org/2000/svg"
    width="100%"
    height="100%"
    viewBox="0 0 805 500"
-   version="1.1">
+   version="1.1"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs id="rootDefs">
-    
+    <linearGradient
+      id="goldWaveStops">
+      <stop stop-color="#fffec5" offset="0" />
+      <stop stop-color="#bd643d" offset="1" />
+    </linearGradient>
+
+    <linearGradient
+      id="goldWaveTrim"
+      spreadMethod="reflect"
+      gradientUnits="userSpaceOnUse"
+      x1="20"
+      x2="20"
+      y1="250"
+      y2="375"
+      xlink:href="#goldWaveStops">
+    </linearGradient>
+
+    <linearGradient
+      id="goldWaveBorder"
+      spreadMethod="reflect"
+      gradientUnits="userSpaceOnUse"
+      x1="20"
+      x2="20"
+      y1="250"
+      y2="365"
+      xlink:href="#goldWaveStops">
+    </linearGradient>
   </defs>
   <g id="rootGroup">
     
-    <!-- // White background // -->
-    <!--<rect fill="#fff" x="20" y="20" width="765" height="460" />-->
-    
     <!-- // Gold border //      -->
-    <path
-      fill="url(#linearGradient5755)"
-      d="m    20,20     785,20    785,480     20,480    z     30,30     785,30      785,480     30,480 z"/>
+    <rect id="borderOutline" x="20" y="20" width="765" height="460" fill="url(#goldWaveBorder)" />
+
+    <g id="bolderGoldOverlays">
+      <rect x="30" y="30" width="5" height="440" fill="url(#goldWaveTrim)"></rect>
+      <rect x="770" y="30" width="5" height="440" fill="url(#goldWaveTrim)"></rect>
+    </g>
     
+    <!-- // White background // -->
+    <rect id="borderInline"
+      x="35"
+      y="30"
+      width="735"
+      height="440"
+      fill="#fff"
+      stroke="black"
+      stroke-width="0.2"
+      />
   </g>
 </svg>

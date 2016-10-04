@@ -1,10 +1,22 @@
 <svg id="goldenBoard" width="100%" height="100%" viewBox="0 0 805 500" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs id="rootDefs">
-    <g name="0 paper image defs"></g>
+    <g name="0 paper image defs">
+      <linearGradient id="goldWaveStops" xmlns="http://www.w3.org/2000/svg">
+        <stop stop-color="#fffec5" offset="0" />
+        <stop stop-color="#bd643d" offset="1" />
+      </linearGradient>
+      <linearGradient id="goldWaveTrim" spreadMethod="reflect" gradientUnits="userSpaceOnUse" x1="20" x2="20" y1="250" y2="375" xlink:href="#goldWaveStops" xmlns="http://www.w3.org/2000/svg"></linearGradient>
+      <linearGradient id="goldWaveBorder" spreadMethod="reflect" gradientUnits="userSpaceOnUse" x1="20" x2="20" y1="250" y2="365" xlink:href="#goldWaveStops" xmlns="http://www.w3.org/2000/svg"></linearGradient>
+    </g>
   </defs>
   <g id="rootGroup">
     <g name="0 paper image">
-      <rect fill="white" x="20" y="20" width="765" height="460"></rect>
+      <rect id="borderOutline" x="20" y="20" width="765" height="460" fill="url(#goldWaveBorder)" xmlns="http://www.w3.org/2000/svg" />
+      <g id="bolderGoldOverlays" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="30" width="5" height="440" fill="url(#goldWaveTrim)"></rect>
+        <rect x="770" y="30" width="5" height="440" fill="url(#goldWaveTrim)"></rect>
+      </g>
+      <rect id="borderInline" x="35" y="30" width="735" height="440" fill="#fff" stroke="black" stroke-width="0.2" xmlns="http://www.w3.org/2000/svg" />
     </g>
   </g>
 </svg>

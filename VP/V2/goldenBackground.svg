@@ -6,6 +6,7 @@
         <stop offset="1" stop-color="#852029" />
       </linearGradient>
     </g>
+    <g name="1 background text bh defs"></g>
     <g name="1 background text image defs">
       <g id="backgroundImageTextBitHit">
         <pattern id="aaa" x="0" y="0" height="100" width="100" patternUnits="userSpaceOnUse">
@@ -18,6 +19,7 @@
     <g name="0 background image">
       <rect fill="url(#backgroundGradient)" x="0" y="0" width="100%" height="100%"></rect>
     </g>
+    <g name="1 background text bh"></g>
     <g name="1 background text image">
       <rect fill="url(#aaa)" x="0" y="0" width="100%" height="100%"></rect>
     </g>
