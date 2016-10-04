@@ -66,9 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\~Designs\bh.svg">
-      <Link>V2\p_1 background text\bh.svg</Link>
-    </Content>
     <Content Include="..\..\..\..\~Designs\maskTry.svg">
       <Link>SVGs\maskTry.svg</Link>
     </Content>
@@ -112,6 +109,9 @@
     <Content Include="V2\app.js" />
     <Content Include="V2\goldenBackground.svg" />
     <Content Include="V2\goldenBoard.svg" />
+    <Content Include="V2\p_0 paper\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="V2\_goldenBackground.svg" />
     <Content Include="V2\_goldenBoard.svg" />
     <Content Include="V2\index.html" />
@@ -132,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="V1\" />
-    <Folder Include="V2\reelbackground\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

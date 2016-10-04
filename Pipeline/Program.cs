@@ -44,23 +44,19 @@ namespace Pipeline
             public FileInfo FileInfo { get; set; }
             public XElement Xml { get; set; }
         }
-
         public class Section
         {
             public string SectionPrefix { get; set; }
             public string IndexTokenToReplace { get; set; }
             public FileInfo SvgTemplate { get; set; }
         }
-
         public static void Main(string[] args)
         {
             FileInfo destinationSvgHtmlInput = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\_index.html");
             FileInfo destinationSvgHtml = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\index.html");
             FileInfo destinationSvg = new FileInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\index.svg");
 
-
             DirectoryInfo baseDirectory = new DirectoryInfo(@"C:\Users\ellis-gowlandn\documents\visual studio 2015\Projects\VP\VP\V2\");
-
 
             List<Section> sections = new List<Section>();
             sections.Add(new Section() {
@@ -109,14 +105,20 @@ namespace Pipeline
 
             svgFiles.OrderBy(s => s.ZIndex).ToList().ForEach(svgFile =>
             {
-                XElement svgDefs = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootDefs").Count() > 0).First();
-                XElement svgGroups = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootGroup").Count() > 0).First();
+                XElement svgDefs = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootDefs").Count() > 0).FirstOrDefault();
+                XElement svgGroups = svgFile.Xml.Descendants().Where(d => d.Attributes().Where(a => a.Name == "id" && a.Value == "rootGroup").Count() > 0).FirstOrDefault();
 
                 XElement svgDefGroup = XElement.Parse(string.Format("<g name=\"{0} defs\"></g>", svgFile.Name));
-                svgDefGroup.Add(svgDefs.Elements());
+                if (svgDefs != null)
+                {
+                    svgDefGroup.Add(svgDefs.Elements());
+                }
 
                 XElement svgGroupGroup = XElement.Parse(string.Format("<g name=\"{0}\"></g>", svgFile.Name));
-                svgGroupGroup.Add(svgGroups.Elements());
+                if (svgGroups != null)
+                {
+                    svgGroupGroup.Add(svgGroups.Elements());
+                }
 
                 containerXmlRootDefs.Add(svgDefGroup);
                 containerXmlRootGroup.Add(svgGroupGroup);

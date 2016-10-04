@@ -25,13 +25,13 @@ function Resize()
         if (center.offsetHeight <= goldenHeight)
         {
             log('setting width');
-            paper.setAttribute('style', 'width:' + goldenWidth + 'px;height:100%;');
+            paper.setAttribute('style', 'width:' + goldenWidth + 'px;height:99%;');
             //center.setAttribute('style', 'margin-left:' + (screen.offsetWidth - goldenWidth) / 2 + 'px');   
         }
         else
         {
             log('setting height');
-            paper.setAttribute('style', 'height:' + goldenHeight + 'px;width:100%;');
+            paper.setAttribute('style', 'height:' + goldenHeight + 'px;width:99%;');
             //center.setAttribute('style', 'margin-top:' + (screen.offsetHeight - goldenHeight) / 2 + 'px');
         }
     })();
