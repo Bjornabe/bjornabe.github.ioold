@@ -2,13 +2,13 @@
 <svg
    width="100%"
    height="100%"
-   viewBox="0 0 805 500"
+   viewBox="0 0 809 500"
    version="1.1"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs id="rootDefs">
     <g id="backgroundImageTextBitHit">
       <pattern
-        id="aaa"
+        id="5B15165BE7A747659C57672CF2C04F40"
         x="0"
         y="0"
         height="100"
@@ -19,7 +19,7 @@
     </g>
   </defs>
   <g id="rootGroup">
-    <rect fill="url(#aaa)" x="0" y="0" width="100%" height="100%"></rect>
+    <rect fill="url(#5B15165BE7A747659C57672CF2C04F40)" x="0" y="0" width="100%" height="100%"></rect>
   </g>
   
 </svg>

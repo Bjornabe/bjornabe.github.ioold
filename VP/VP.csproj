@@ -108,10 +108,19 @@
     <Content Include="V0\VideoPkr.html" />
     <Content Include="V2\app.js" />
     <Content Include="V2\goldenBackground.svg" />
-    <Content Include="V2\goldenBoard.svg" />
+    <Content Include="V2\goldenBoard.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="V2\p_0 paper\image.svg">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="V2\p_1 reelbackgrounds\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V2\p_2 reels\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V2\_glyfs\7.svg" />
     <Content Include="V2\_goldenBackground.svg" />
     <Content Include="V2\_goldenBoard.svg" />
     <Content Include="V2\index.html" />
