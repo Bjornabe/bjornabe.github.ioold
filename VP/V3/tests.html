@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>All tests</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.0.1.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.0.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"></script>
+
+    <script src="js\log.js"></script>
+    <script src="js\lib\FruitImage.js"></script>
+    <script src="js\lib\FruitPosition.js"></script>
+    <script src="js\lib\ReelController.js"></script>
+    <script src="js\lib\Reel.js"></script>
+    <script src="js\lib\ReelsContainer.js"></script>
+
+    <script type="text/javascript">
+
+        QUnit.test("Create FruitImage", function (assert) {
+
+            var newFruit = new FruitImage(0);
+            assert.ok(true);
+
+        });
+
+        QUnit.test("Check FruitImage Constructor", function (assert) {
+
+            var newFruit = new FruitImage(77);
+
+            assert.ok(newFruit.Href == "fruitImage77", "Passed!");
+        });
+
+        QUnit.test("Create FruitPosition", function (assert) {
+
+            var newFruitPosition = new FruitPosition(null, 0, []);
+            assert.ok(true);
+
+        });
+
+        QUnit.test("Check FruitPosition Constructor", function (assert) {
+
+            var newFruitPosition = new FruitPosition(null, 77, []);
+
+            assert.ok(newFruitPosition.Index == 77, "Passed!");
+        });
+
+        QUnit.test("Check ReelsContainer Constructor", function (assert) {
+
+            var settings = {
+                NumberOfReels: 5,
+                ReelBackgroundId: "hello",
+                ReelSeperatorWith: 20
+            }
+
+            var reelsContainerElement = {
+                children: [],
+                appendChild: function (domElement) {
+                    this.children.push(domElement);
+                }
+            }
+
+            var reelsSizeElement = {
+                getAttribute: function (name) {
+                    if (name == 'width') {
+                        return 1000;
+                    }
+                    if (name == 'height') {
+                        return 100;
+                    }
+                    if (name == 'x') {
+                        return 20;
+                    }
+                    if (name == 'y') {
+                        return 40;
+                    }
+                }
+            }
+
+            var newReelsContainer = new ReelsContainer(settings, reelsContainerElement, reelsSizeElement);
+            newReelsContainer.Construct.ConstructReels = function () { };
+
+            assert.ok(newReelsContainer.ReelsTotalWidth == 1000, "ReelsTotalWidth");
+            assert.ok(newReelsContainer.ReelWidth == 200, "ReelWidth");
+            assert.ok(newReelsContainer.ReelsHeight == 100, "ReelsX");
+            assert.ok(newReelsContainer.ReelsX == 20, "ReelsX");
+            assert.ok(newReelsContainer.ReelsY == 40, "ReelsX");
+
+            assert.ok(newReelsContainer.Reels.length == 5, "Number of reels");
+
+            assert.ok(reelsContainerElement.children.length == 13, "Sub objects");
+
+        });
+
+
+
+
+
+
+    </script>
+</body>
+</html>

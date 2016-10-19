@@ -1,0 +1,24 @@
+﻿html, body
+{
+    margin : 0px;
+    padding : 0px;
+
+    width : 100%;
+    height : 100%;
+
+    background-color:black;
+}
+
+#center
+{
+    text-align:center;
+    height:99%;
+    position:relative;
+}
+
+#full
+{
+    width:100%;
+    height:99%;
+    position:absolute;
+}

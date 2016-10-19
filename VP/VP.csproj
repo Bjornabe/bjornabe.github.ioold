@@ -124,7 +124,9 @@
     <Content Include="V2\_goldenBackground.svg" />
     <Content Include="V2\_goldenBoard.svg" />
     <Content Include="V2\index.html" />
-    <Content Include="V2\index.svg" />
+    <Content Include="V2\index.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="V2\b_0 background\image.svg">
       <SubType>Designer</SubType>
     </Content>
@@ -134,10 +136,45 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="V2\_index.html" />
+    <Content Include="V3\css\board-golden-aspect.css" />
+    <Content Include="V3\js\app.js" />
+    <Content Include="V3\js\bezier.js" />
+    <Content Include="V3\js\board-golden-aspect.js" />
+    <Content Include="V3\js\json2.js" />
+    <Content Include="V3\js\lib\FruitPosition.js" />
+    <Content Include="V3\index.html" />
+    <Content Include="V3\js\lib\SpinController.js" />
+    <Content Include="V3\js\lib\ReelsContainer.js" />
+    <Content Include="V3\js\lib\Settings.js" />
+    <Content Include="V3\js\lib\SpinParams.js" />
+    <Content Include="V3\js\log.js" />
+    <Content Include="V3\svg\background\b0 background\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V3\svg\background\b1 background text\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V3\svg\background\goldenBackground.svg" />
+    <Content Include="V3\svg\board\goldenBoard.svg" />
+    <Content Include="V3\svg\board\p0 paper\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V3\svg\background\_goldenBackground.svg" />
+    <Content Include="V3\svg\board\p1 reel backgrounds\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V3\svg\board\p2 fruit images\image.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="V3\svg\board\_goldenBoard.svg" />
+    <Content Include="V3\_index.html" />
+    <Content Include="V3\tests.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="V3\js\lib\Fruit.js" />
+    <Content Include="V3\js\lib\Reel.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="V1\" />
@@ -153,15 +190,14 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2941</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:2941/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:777</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
