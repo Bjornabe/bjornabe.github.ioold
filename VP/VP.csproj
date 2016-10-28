@@ -143,7 +143,8 @@
     <Content Include="V3\js\json2.js" />
     <Content Include="V3\js\lib\FruitPosition.js" />
     <Content Include="V3\index.html" />
-    <Content Include="V3\js\lib\SpinController.js" />
+    <Content Include="V3\js\lib\Reel.DrawLandscape.js" />
+    <Content Include="V3\js\lib\Reel.Spin.js" />
     <Content Include="V3\js\lib\ReelsContainer.js" />
     <Content Include="V3\js\lib\Settings.js" />
     <Content Include="V3\js\lib\SpinParams.js" />

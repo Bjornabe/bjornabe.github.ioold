@@ -32,7 +32,10 @@ function ReelsContainer(settings, reelsContainerElement, reelsSizeElement) {
         this.FruitHeight = this.ReelsHeight / this.Settings.NumberOfVisibleFruitsPerReel;
 
         for (var x = 0; x < this.Settings.NumberOfReels; x++) {
-            this.Reels.push(new Reel(this, x));
+            // index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(x, this.ReelWidth, this.ReelsHeight, this.Settings.NumberOfVisibleFruitsPerReel, this.ReelsContainerX, this.ReelsContainerY);
+            this.Reels.push(newReel);
+            newReel.DrawLandscape(this.ReelsContainerElement, this.Settings);
         }
     }
 

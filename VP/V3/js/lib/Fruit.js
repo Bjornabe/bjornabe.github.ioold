@@ -1,21 +1,9 @@
 ﻿
 function Fruit(index, millionOdds) {
 
-    this.Index
-    this.Href;
-    this.MillionOdds;
+    this.Index = index;
+    this.Href = 'fruitImage' + index;
+    this.MillionOdds = 0;
+    if (millionOdds) this.MillionOdds = millionOdds;
 
-    this.Construct = function()
-    {
-        this.Index = index;
-        this.MillionOdds = millionOdds;
-        this.Href = 'fruitImage' + index;
-    }
-
-    this.Destroy = function()
-    {
-        
-    }
-
-    this.Construct();
 };

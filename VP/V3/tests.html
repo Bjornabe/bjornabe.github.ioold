@@ -14,92 +14,242 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"></script>
 
     <script src="js\log.js"></script>
-    <script src="js\lib\FruitImage.js"></script>
+    <script src="js\lib\Fruit.js"></script>
     <script src="js\lib\FruitPosition.js"></script>
-    <script src="js\lib\ReelController.js"></script>
+    <script src="js\lib\ReelsController.js"></script>
+
     <script src="js\lib\Reel.js"></script>
+    <script src="js\lib\Reel.Spin.js"></script>
+    <script src="js\lib\Reel.DrawLandscape.js"></script>
+
     <script src="js\lib\ReelsContainer.js"></script>
 
+    <!-- Fruit.js -->
     <script type="text/javascript">
 
-        QUnit.test("Create FruitImage", function (assert) {
+        QUnit.test("Create Fruit", function (assert) {
 
-            var newFruit = new FruitImage(0);
-            assert.ok(true);
+            var newFruit = new Fruit(-3, 777);
 
+            assert.ok(newFruit.Index == -3, "Index");
+            assert.ok(newFruit.Href == 'fruitImage-3', "Fruit Href construction ok");
+            assert.ok(newFruit.MillionOdds == 777);
         });
 
-        QUnit.test("Check FruitImage Constructor", function (assert) {
+    </script>
 
-            var newFruit = new FruitImage(77);
-
-            assert.ok(newFruit.Href == "fruitImage77", "Passed!");
-        });
+    <!-- FruitPosition.js -->
+    <script type="text/javascript">
 
         QUnit.test("Create FruitPosition", function (assert) {
 
-            var newFruitPosition = new FruitPosition(null, 0, []);
-            assert.ok(true);
+            var newFruitPosition = new FruitPosition(7, 3, 150, 200);
+
+            assert.ok(newFruitPosition.ReelIndex == 7, "ReelIndex");
+            assert.ok(newFruitPosition.FruitPositionIndex == 3, "Index");
+            assert.ok(newFruitPosition.FruitHeight == 150, "FruitHeight");
+            assert.ok(newFruitPosition.FruitWidth == 200, "FruitWidth");
+
+            assert.ok(newFruitPosition.DomUse, "DomUse");
+            assert.ok(newFruitPosition.DomGroup, "DomGroup");
+
+            assert.ok(newFruitPosition.DomGroup.getAttribute('transform') == 'translate(0,450), scale(0.15)', "DomUse transform");
+
+            assert.ok(newFruitPosition.DomUse.getAttribute('id') == 'fruitPosition_7_3', "DomUse Id");
+            assert.ok(newFruitPosition.DomUse.getAttributeNS('http://www.w3.org/1999/xlink', 'href') == '#fruitImage-1', "DomUse href");
 
         });
 
-        QUnit.test("Check FruitPosition Constructor", function (assert) {
 
-            var newFruitPosition = new FruitPosition(null, 77, []);
+        QUnit.test("Setting FruitPosition Image", function (assert) {
 
-            assert.ok(newFruitPosition.Index == 77, "Passed!");
+            var newFruitPosition = new FruitPosition(7, 3, 150, 200);
+
+            assert.ok(newFruitPosition.SetImageIndex(5), "SetImageIndex(5)");
+            assert.ok(newFruitPosition.GetImageIndex() == 5, "GetImage() == 5");
+            assert.ok(newFruitPosition.GetImageHref() == '#fruitImage5', "GetImageHref() == '#fruitImage5'");
+            assert.ok(newFruitPosition.DomUse.getAttributeNS('http://www.w3.org/1999/xlink', 'href') == '#fruitImage5', "DomUse href #fruitImage5");
+            
         });
 
-        QUnit.test("Check ReelsContainer Constructor", function (assert) {
+    </script>
+
+    <!-- Reel.js -->
+    <script type="text/javascript">
+
+        QUnit.test("Create Reel", function (assert) {
+
+            //index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(1, 200, 500, 5, 15, 20);
+
+            assert.ok(newReel, "Reel");
+
+            assert.ok(newReel.Index = 1, "newReel.Index = 1");
+            assert.ok(newReel.ReelWidth = 200, "newReel.ReelWidth = 200");
+            assert.ok(newReel.ReelHeight = 500, "newReel.ReelHeight = 500");
+
+            assert.ok(newReel.NumberOfVisibleFruitsPerReel = 5, "newReel.NumberOfVisibleFruitsPerReel");
+
+            assert.ok(newReel.ReelsContainerX = 15, "newReel.ReelsContainerX = 15");
+            assert.ok(newReel.ReelsContainerY = 20, "newReel.ReelsContainerY = 20");
+
+            assert.ok(newReel.FruitHeight = 100, "newReel.FruitHeight = 100");
+
+            assert.ok(newReel.ReelX = 215, "newReel.ReelX = 215");
+        });
+
+
+        QUnit.test("Draw Reel", function (assert) {
+
+            //index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(1, 200, 500, 5, 15, 20);
+
+            var reelsContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 
             var settings = {
                 NumberOfReels: 5,
-                ReelBackgroundId: "hello",
-                ReelSeperatorWith: 20
+                ReelBackgroundId: "reelBackgroundGrad",
+                ReelSeperatorBackgroundId: "reelSeperatorBackground",
+                ReelSeperatorWith: 10
             }
 
-            var reelsContainerElement = {
-                children: [],
-                appendChild: function (domElement) {
-                    this.children.push(domElement);
-                }
+            newReel.DrawLandscape(reelsContainer, settings);
+
+            assert.ok(newReel.ReelFruitGroupDomTransformY = -80, "newReel.ReelFruitGroupDomTransformY = -80");
+        });
+
+        QUnit.test("Simple Reel Spin", function (assert) {
+
+            //index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(1, 200, 500, 5, 15, 20);
+
+            var reelsContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+            var settings = {
+                NumberOfReels: 5,
+                ReelBackgroundId: "reelBackgroundGrad",
+                ReelSeperatorBackgroundId: "reelSeperatorBackground",
+                ReelSeperatorWith: 10
             }
 
-            var reelsSizeElement = {
-                getAttribute: function (name) {
-                    if (name == 'width') {
-                        return 1000;
-                    }
-                    if (name == 'height') {
-                        return 100;
-                    }
-                    if (name == 'x') {
-                        return 20;
-                    }
-                    if (name == 'y') {
-                        return 40;
-                    }
-                }
+            newReel.DrawLandscape(reelsContainer, settings);
+
+            var spinParams = {
+                EaseInDurationMilliseconds: 100,
+                SpinDurationMilliseconds: 1000,
+                MaxVelocity: 3,
+                AccelForcePerMillisecond: 20,
+                DecelForce: 0.5
             }
 
-            var newReelsContainer = new ReelsContainer(settings, reelsContainerElement, reelsSizeElement);
-            newReelsContainer.Construct.ConstructReels = function () { };
 
-            assert.ok(newReelsContainer.ReelsTotalWidth == 1000, "ReelsTotalWidth");
-            assert.ok(newReelsContainer.ReelWidth == 200, "ReelWidth");
-            assert.ok(newReelsContainer.ReelsHeight == 100, "ReelsX");
-            assert.ok(newReelsContainer.ReelsX == 20, "ReelsX");
-            assert.ok(newReelsContainer.ReelsY == 40, "ReelsX");
+            //assert.expect(6);
 
-            assert.ok(newReelsContainer.Reels.length == 5, "Number of reels");
+            var testingTimeStampsIndex = -1;
+            var testingTimeStamps = [
+                0,      // 0 ms
+                10,     // 10 ms
+                20,     // 20 ms
+                500,    // 500 ms
+                1000,   // 1s
+                5000,   // 5s <-- shouldnt get to here
+                10000,  // 10s
+                100000, // 100s
+                1000000,// 1000s
+            ];
 
-            assert.ok(reelsContainerElement.children.length == 13, "Sub objects");
+            newReel._requestAnimationFrame = function(spinFunction) {
+                
+                assert.ok(true);
+                testingTimeStampsIndex = testingTimeStampsIndex + 1;
+                spinFunction(testingTimeStamps[testingTimeStampsIndex]);
+            };
 
+            //newReel.Spin(spinParams);
         });
 
 
 
+        QUnit.test("Max Acceleration Skipping Reel Spin", function (assert) {
 
+            //index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(0, 100, 1000, 10, 0, 0); // Ten fruits 100px in size
+
+            var reelsContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+            var settings = {
+                NumberOfReels: 5,
+                ReelBackgroundId: "reelBackgroundGrad",
+                ReelSeperatorBackgroundId: "reelSeperatorBackground",
+                ReelSeperatorWith: 10
+            }
+
+            newReel.DrawLandscape(reelsContainer, settings);
+
+            var spinParams = {
+                EaseInDurationMilliseconds: 0,
+                SpinDurationMilliseconds: 10000,
+                MaxVelocity: 1000,
+                AccelForcePerMillisecond: 1000,
+                DecelForce: 0.5
+            }
+
+
+            assert.expect(6);
+
+            var testingTimeStampsIndex = -1;
+            var testingTimeStamps = [
+                10,      // 0 ms
+                //110,     // 10 ms
+                //120,     // 20 ms
+                //1500,    // 500 ms
+                //11000,   // 1s
+                164125,   // 5s <-- shouldnt get to here
+                110000,  // 10s
+                1100000, // 100s
+                11000000,// 1000s
+            ];
+
+            newReel._requestAnimationFrame = function (spinFunction) {
+
+                assert.ok(true);
+                testingTimeStampsIndex = testingTimeStampsIndex + 1;
+                spinFunction(testingTimeStamps[testingTimeStampsIndex]);
+            };
+
+            //newReel.Spin(spinParams);
+        });
+
+        QUnit.test("Spin stepping", function (assert) {
+
+            //index, reelWidth, reelHeight, numberOfVisibleFruitsPerReel, reelsContainerX, reelsContainerY
+            var newReel = new Reel(0, 100, 1000, 3, 0, 0); // Ten fruits 100px in size
+
+            var reelsContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+            var settings = {
+                NumberOfReels: 5,
+                ReelBackgroundId: "reelBackgroundGrad",
+                ReelSeperatorBackgroundId: "reelSeperatorBackground",
+                ReelSeperatorWith: 10
+            }
+
+            newReel.DrawLandscape(reelsContainer, settings);
+
+            newReel.SetFruitImageIndex(0, 10);
+            newReel.SetFruitImageIndex(1, 11);
+            newReel.SetFruitImageIndex(2, 12);
+            newReel.SetFruitImageIndex(3, 13);
+
+            newReel.ShiftDownFruitImages(1, 77);
+
+            assert.ok(newReel.GetFruitImageIndex(0) == 77);
+            assert.ok(newReel.GetFruitImageIndex(1) == 10);
+            assert.ok(newReel.GetFruitImageIndex(2) == 11);
+            assert.ok(newReel.GetFruitImageIndex(3) == 12);
+
+
+        });
 
 
     </script>
