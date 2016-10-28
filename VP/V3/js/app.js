@@ -24,7 +24,7 @@ var newReelsContainer = new ReelsContainer(settings, reelsContainerElement, reel
 var spinParams1 = {
     EaseInDurationMilliseconds: 0,
     SpinDurationMilliseconds: 1860,
-    MaxVelocity: 3,
+    MaxVelocity: 1.2,
 
     AccelForcePerMillisecond: 0.0075,
     DecelForce: 0.5
@@ -33,7 +33,7 @@ var spinParams1 = {
 var spinParams2 = {
     EaseInDurationMilliseconds: 168,
     SpinDurationMilliseconds: 2160,
-    MaxVelocity: 3,
+    MaxVelocity: 1.2,
 
     AccelForcePerMillisecond: 0.0075,
     DecelForce: 0.5
@@ -42,7 +42,7 @@ var spinParams2 = {
 var spinParams3 = {
     EaseInDurationMilliseconds: 252,
     SpinDurationMilliseconds: 2640,
-    MaxVelocity: 3,
+    MaxVelocity: 1.2,
 
     AccelForcePerMillisecond: 0.0075,
     DecelForce: 0.5
@@ -51,7 +51,7 @@ var spinParams3 = {
 var spinParams4 = {
     EaseInDurationMilliseconds: 336,
     SpinDurationMilliseconds: 3120,
-    MaxVelocity: 3,
+    MaxVelocity: 1.2,
 
     AccelForcePerMillisecond: 0.0075,
     DecelForce: 0.5
@@ -60,7 +60,7 @@ var spinParams4 = {
 var spinParams5 = {
     EaseInDurationMilliseconds: 420,
     SpinDurationMilliseconds: 3600,
-    MaxVelocity: 3,
+    MaxVelocity: 1.2,
 
     AccelForcePerMillisecond: 0.0075,
     DecelForce: 0.5
